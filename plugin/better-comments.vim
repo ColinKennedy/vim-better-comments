@@ -28,10 +28,9 @@ function! s:BetterComments()
 
   let b:bettercomments_syntax_prefix = exists('g:bettercomments_language_aliases[language]') ? g:bettercomments_language_aliases[language] : language
 
-  call s:AddMatchesGroup("Highlight", [ '+', 'WARN:' ])
+  call s:AddMatchesGroup("Highlight", [ ')', 'WARN:' ])
   call s:AddMatchesGroup("Error", [ '!', 'ERROR:', 'DEPRECATED:' ])
   call s:AddMatchesGroup("Question", [ '?', 'QUESTION:' ])
-  call s:AddMatchesGroup("Todo", [ 'TODO:', 'FIXME:' ])
   let containedin=join(map(['LineComment', 'MultilineComment', 'DocComment', 'Comment'], 'b:bettercomments_syntax_prefix."".v:val'), ",").',Comment'
   exe 'syn match StrikeoutBetterComments "\(\/\{4\}\|#\{2\}\|\"\{2\}\).\+" containedin='.containedin
 endfunction
