@@ -9,12 +9,12 @@ if ( exists('g:loaded_bettercomments') && g:loaded_bettercomments ) || v:version
 endif
 let g:loaded_bettercomments = 1
 
-" Functions {{{
+" Functions
 
 function! s:AddMatchesGroup(name, rules)
   let containedin=join(map(['MultilineComment', 'LineComment', 'DocComment', 'Comment'], 'b:bettercomments_syntax_prefix."".v:val'), ",").',Comment'
-  exe 'syn match '.a:name.'BetterComments "\(^\s*\)\@<=\([^0-9A-Za-z_ ]\+ *\)\? \?\('.join(a:rules, '\|').'\)...\+" containedin='.containedin
-  exe 'syn match '.a:name.'LineBetterComments "\(\/\{2\}\|#\{1\}\|\"\{1\}\) *\('.join(a:rules, '\|').'\)...\+" containedin='.b:bettercomments_syntax_prefix.'LineComment'
+  exe 'syn match '.a:name.'BetterComments "\([^0-9A-Za-z_ ]\+ *\)\?\('.join(a:rules, '\|').'\)$" containedin='.containedin
+  exe 'syn match '.a:name.'LineBetterComments "\(\/\{2\}\|#\{1\}\|\"\{1\}\)\([0-9A-Za-z_\.:' . "'" .' ]\+\)\('.join(a:rules, '\|').'\)$" containedin='.b:bettercomments_syntax_prefix.'LineComment'
 endfunction
 
 function! s:BetterComments()
