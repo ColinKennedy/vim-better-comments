@@ -13,8 +13,7 @@ let g:loaded_bettercomments = 1
 
 function! s:AddMatchesGroup(name, rules)
   let containedin=join(map(['MultilineComment', 'LineComment', 'DocComment', 'Comment'], 'b:bettercomments_syntax_prefix."".v:val'), ",").',Comment'
-  exe 'syn match '.a:name.'BetterComments "\([^0-9A-Za-z_ ]\+ *\)\?\('.join(a:rules, '\|').'\)$" containedin='.containedin
-  exe 'syn match '.a:name.'LineBetterComments "\(\/\{2\}\|#\{1\}\|\"\{1\}\)\([0-9A-Za-z_()\.:' . "'" .' ]\+\)\('.join(a:rules, '\|').'\)$" containedin='.b:bettercomments_syntax_prefix.'LineComment'
+  exe 'syn match '.a:name.'LineBetterComments "\(\/\{2\}\|#\{1\}\|\"\{1\}\)\([0-9A-Za-z_#@\$()!?\.:' . "'" .' ]\+\)\('.join(a:rules, '\|').'\)$" containedin='.b:bettercomments_syntax_prefix.'LineComment'
 endfunction
 
 function! s:BetterComments()
@@ -32,7 +31,6 @@ function! s:BetterComments()
   call s:AddMatchesGroup("Error", [ '!', 'ERROR:', 'DEPRECATED:' ])
   call s:AddMatchesGroup("Question", [ '?', 'QUESTION:' ])
   let containedin=join(map(['LineComment', 'MultilineComment', 'DocComment', 'Comment'], 'b:bettercomments_syntax_prefix."".v:val'), ",").',Comment'
-  exe 'syn match StrikeoutBetterComments "\(\/\{4\}\|#\{2\}\|\"\{2\}\).\+" containedin='.containedin
 endfunction
 
 
