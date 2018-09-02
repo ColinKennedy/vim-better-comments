@@ -36,18 +36,18 @@ function! s:BetterComments()
   exe 'syn match StrikeoutBetterComments "\(\/\{4\}\|#\{2\}\|\"\{2\}\).\+" containedin='.containedin
 endfunction
 
-"}}}
 
-" Autocommands {{{
+
+" Autocommands
 
 augroup betterCommentsPluginAuto
   autocmd!
   au FileType * call s:BetterComments()
 augroup END
 
-" }}}
+"
 
-" Syntax {{{
+" Syntax
 
 hi def link ErrorBetterComments WarningMsg
 hi def link ErrorLineBetterComments ErrorBetterComments
@@ -59,6 +59,6 @@ hi def link StrikeoutBetterComments WarningMsg
 hi def link TodoBetterComments Type
 hi def link TodoLineBetterComments TodoBetterComments
 
-"}}}
 
-" vim:fen:fdm=marker:fmr={{{,}}}:fdl=0:fdc=1:ts=2:sw=2:sts=2
+
+" vim:fen:fdm=marker:fmr=,:fdl=0:fdc=1:ts=2:sw=2:sts=2
