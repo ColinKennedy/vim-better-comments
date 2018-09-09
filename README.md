@@ -12,7 +12,7 @@ So instead of writing
 You'd write
 
 ```python
-# Import information here!
+# Important information here!
 ```
 
 All other notes in this README still apply
