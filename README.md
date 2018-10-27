@@ -1,5 +1,22 @@
 # vim-better-comments
 
+A slightly modified version of vim-better-comments that moves markers from the
+beginning of comment-lines to the end, instead.
+
+So instead of writing
+
+```python
+# ! Important information here
+```
+
+You'd write
+
+```python
+# Important information here!
+```
+
+All other notes in this README still apply
+
 BetterComments extension will help you create more human-friendly comments in your code.
 I've borrowed the core idea from the [Visual Studio plugin](https://github.com/aaron-bond/better-comments) with the same name.
 
